@@ -8,7 +8,7 @@
 #define STUDENT_FILE "student.csv"
 #define RESULT_FILE "results.csv"
 
-int loggedIn = 0;
+int teacherLoggedIn = 0;
 
 int teacherAuthenticate(const char *filename, const char *id, const char *name) {
     char line[256];
@@ -38,7 +38,7 @@ void loginTeacher() {
     //printf("login a new teacher...\n");
 
     char name[50], id[50];
-    printf("Enter Your ID: ");
+    printf("Enter Teacher ID: ");
     scanf("%s", id);
     printf("Enter Teacher Name: ");
     scanf("%s", name);
@@ -47,7 +47,7 @@ void loginTeacher() {
     if (teacherAuthenticate(TEACHER_FILE, id, name)) {
         printf("Login successful! Welcome, %s\n", name);
         printf("\n");
-        loggedIn = 1;  // Mark teacher as logged in
+        teacherLoggedIn = 1;  // Mark teacher as logged in
     } else {
         printf("Login failed. Invalid credentials.\n");
     }
@@ -100,7 +100,7 @@ void teacherPanel() {
     int choice;
     printf("\n====================== Teacher Panel ======================\n");
     do {
-        if(!loggedIn) {
+        if(!teacherLoggedIn) {
             printf("1. Login\n");
             printf("2. Go Back\n");
 
@@ -141,13 +141,13 @@ void teacherPanel() {
                 break;
 
                 //case 6:
-                    updateStudentResult();
-                break;
+                  //  updateStudentResult();
+               // break;
 
                 case 6:
-                    if (loggedIn) {
+                    if (teacherLoggedIn) {
                         printf("Teacher logging out successful\n");
-                        loggedIn = 0;
+                        teacherLoggedIn = 0;
                     } else {
                         printf("You are not logged in.\n");
                     }
@@ -158,4 +158,5 @@ void teacherPanel() {
         }
     }
     while (choice != 6);
+    //while (choice != 7);
 }

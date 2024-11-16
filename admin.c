@@ -52,7 +52,7 @@ int loginAdmin() {
 // Manage teachers
 void manageTeachers() {
     int choice;
-    printf("==== Manage Teachers ====\n");
+    printf("===================== Manage Teachers =====================\n");
     do {
         printf("1. Add Teacher\n");
         printf("2. View Teachers\n");
@@ -87,7 +87,7 @@ void manageTeachers() {
 // Manage students
 void manageStudents() {
     int choice;
-    printf("==== Manage Students ====\n");
+    printf("===================== Manage Students =====================\n");
     do {
         printf("1. Add Student\n");
         printf("2. View Students\n");
@@ -122,7 +122,7 @@ void manageStudents() {
 // Manage courses
 void manageCourses() {
     int choice;
-    printf("==== Manage Courses ====\n");
+    printf("===================== Manage Courses =====================\n");
     do {
         printf("1. Assign Courses to Teacher\n");
         printf("2. View Assigned Courses\n");
@@ -275,8 +275,9 @@ void addStudent() {
 }
 
 void viewStudents() {
-    printf("List of Students:\n");
+    printf("================ List of Students ================\n");
     readFromFile(STUDENT_FILE);
+    printf("\n");
 }
 
 void updateStudent() {

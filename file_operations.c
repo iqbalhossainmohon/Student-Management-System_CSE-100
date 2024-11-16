@@ -76,9 +76,9 @@ void updateFile(const char* filename, const char* id, const char* newData) {
     rename("temp.csv", filename);
 
     if (found) {
-        printf("Record updated successfully.\n");
+        printf("Record updated successfully.\n\n");
     } else {
-        printf("Record not found.\n");
+        printf("Record not found.\n\n");
     }
 }
 
@@ -110,7 +110,9 @@ void deleteFromFile(const char* filename, const char* id) {
 
     if (found) {
         printf("Record deleted successfully.\n");
+        printf("\n");
     } else {
         printf("Record not found.\n");
+        printf("\n");
     }
 }
