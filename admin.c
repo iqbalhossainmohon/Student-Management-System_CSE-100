@@ -206,10 +206,6 @@ void adminPanel() {
 
 
 
-
-
-
-
 /// Teacher
 void addTeacher() {
     char id[10], name[50], subject[50];

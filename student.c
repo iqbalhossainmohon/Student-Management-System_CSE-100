@@ -29,7 +29,6 @@ int studentAuthenticate(const char *filename, const char *id, const char *name) 
             return 1;
         }
     }
-
     fclose(file);
     return 0;
 }
@@ -51,13 +50,17 @@ void loginStudent() {
 }
 
 void viewPersonalInfo() {
-    printf("view personal info...\n");
     // Logic for a student to view only their own info
+   printf("=============== List of Student ===============\n");
+    readFromFile(STUDENT_FILE);
+    printf("\n");
 }
 
 void viewResult() {
-    printf("view result...\n");
     // Logic for a student to view only their own result
+    printf("=============== List of Result ===============\n");
+    readFromFile(RESULT_FILE);
+    printf("\n");
 }
 
 
@@ -90,7 +93,7 @@ void studentPanel() {
             }
         }
         else {
-            printf("3. View Personal Info\n");
+            printf("3. View Students Info\n");
             printf("4. View Result\n");
             printf("5. Special Feature\n");
             printf("6. Logout\n");
@@ -112,7 +115,7 @@ void studentPanel() {
                 case 6:
 
                     if (studentLoggedIn) {
-                        printf("Student logging out successful\n");
+                        printf("Student logging out successful\n\n");
                         studentLoggedIn = 0;
                     } else {
                         printf("You are not logged in.\n");

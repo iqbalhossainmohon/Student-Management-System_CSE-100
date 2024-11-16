@@ -21,29 +21,26 @@ int teacherAuthenticate(const char *filename, const char *id, const char *name) 
 
     while (fgets(line, sizeof(line), file)) {
         char stored_id[50], stored_name[50];
-        // Parse line: "id,name"
+
         sscanf(line, "%[^,],%[^,]", stored_id, stored_name);
 
         if (strcmp(id, stored_id) == 0 && strcmp(name, stored_name) == 0) {
             fclose(file);
-            return 1;  // Authentication successful
+            return 1;
         }
     }
 
     fclose(file);
-    return 0;  // Authentication failed if no match is found
+    return 0;
 }
 
 void loginTeacher() {
-    //printf("login a new teacher...\n");
-
     char name[50], id[50];
     printf("Enter Teacher ID: ");
     scanf("%s", id);
     printf("Enter Teacher Name: ");
     scanf("%s", name);
 
-    // Authenticate using the teacher's name and ID
     if (teacherAuthenticate(TEACHER_FILE, id, name)) {
         printf("Login successful! Welcome, %s\n", name);
         printf("\n");
