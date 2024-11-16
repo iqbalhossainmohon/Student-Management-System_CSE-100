@@ -85,8 +85,10 @@ void addStudentResult() {
 }
 
 void viewAllResults() {
-    printf("view all student results...\n");
-    // Logic to view all results for students
+    //printf("view all student results...\n");
+    printf("=============== View Student Result ===============\n");
+    readFromFile(RESULT_FILE);
+    printf("\n");
 }
 
 /* void updateStudentResult() {
