@@ -5,6 +5,8 @@
 
 
 #define TEACHER_FILE "teacher.csv"
+#define STUDENT_FILE "student.csv"
+#define RESULT_FILE "results.csv"
 
 int loggedIn = 0;
 
@@ -52,13 +54,34 @@ void loginTeacher() {
 }
 
 void viewAllStudents() {
-    printf("view all students...\n");
-    // Logic to view all students
+    //printf("view all students...\n");
+    printf("=============== List of Student ===============\n");
+    readFromFile(STUDENT_FILE);
+    printf("\n");
 }
 
 void addStudentResult() {
-    printf("Add students Result...\n");
-    // Logic to add results for students
+    //printf("Add students Result...\n");
+    char id[50], subject[50];
+    float marks;
+
+    printf("Enter Student ID: ");
+    scanf("%s", id);
+    printf("Enter Subject: ");
+    scanf("%s", subject);
+    printf("Enter Marks: ");
+    scanf("%f", &marks);
+
+    FILE *file = fopen(RESULT_FILE, "a");
+    if (file == NULL) {
+        perror("Error opening results file");
+        return;
+    }
+
+    fprintf(file, "%s,%s,%.2f\n", id, subject, marks); // Save result as "id,subject,marks"
+    fclose(file);
+
+    printf("Result added successfully for Student ID %s.\n", id);
 }
 
 void viewAllResults() {
@@ -66,10 +89,10 @@ void viewAllResults() {
     // Logic to view all results for students
 }
 
-void updateStudentResult() {
+/* void updateStudentResult() {
     printf("update student result...\n");
     // Logic to update student results
-}
+} */
 
 void teacherPanel() {
     int choice;
@@ -97,8 +120,8 @@ void teacherPanel() {
             printf("3. View All Students\n");
             printf("4. Add Student Result\n");
             printf("5. View All Results\n");
-            printf("6. Update Student Result\n");
-            printf("7. Logout\n");
+            //printf("6. Update Student Result\n");
+            printf("6. Logout\n");
 
             printf("=========================\n");
             printf("Select an option: ");
@@ -114,10 +137,12 @@ void teacherPanel() {
                 case 5:
                     viewAllResults();
                 break;
-                case 6:
+
+                //case 6:
                     updateStudentResult();
                 break;
-                case 7:
+
+                case 6:
                     if (loggedIn) {
                         printf("Teacher logging out successful\n");
                         loggedIn = 0;
