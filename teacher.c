@@ -59,15 +59,22 @@ void viewAllStudents() {
 
 void addStudentResult() {
     //printf("Add students Result...\n");
-    char id[50], subject[50];
-    float marks;
+    char id[50];
+    float subject01, subject02, subject03, subject04, subject05;
+    //float marks;
 
     printf("Enter Student ID: ");
     scanf("%s", id);
-    printf("Enter Subject: ");
-    scanf("%s", subject);
-    printf("Enter Marks: ");
-    scanf("%f", &marks);
+    printf("Marks of the 1st subject: ");
+    scanf("%f", &subject01);
+    printf("Marks of the 2nd subject: ");
+    scanf("%f", &subject02);
+    printf("Marks of the 3rd subject: ");
+    scanf("%f", &subject03);
+    printf("Marks of the 4th subject: ");
+    scanf("%f", &subject04);
+    printf("Marks of the 5th subject: ");
+    scanf("%f", &subject05);
 
     FILE *file = fopen(RESULT_FILE, "a");
     if (file == NULL) {
@@ -75,10 +82,11 @@ void addStudentResult() {
         return;
     }
 
-    fprintf(file, "%s,%s,%.2f\n", id, subject, marks); // Save result as "id,subject,marks"
+    fprintf(file, "%s,%.2f,%.2f,%.2f,%.2f,%.2f\n", id, subject01, subject02, subject03, subject04, subject05);
     fclose(file);
 
     printf("Result added successfully for Student ID %s.\n", id);
+    printf("\n");
 }
 
 void viewAllResults() {
@@ -95,7 +103,7 @@ void viewAllResults() {
 
 void teacherPanel() {
     int choice;
-    printf("\n====================== Teacher Panel ======================\n");
+    printf("\n================= Teacher Panel =================\n");
     do {
         if(!teacherLoggedIn) {
             printf("1. Login\n");
@@ -143,7 +151,7 @@ void teacherPanel() {
 
                 case 6:
                     if (teacherLoggedIn) {
-                        printf("Teacher logging out successful\n");
+                        printf("Teacher logging out successful\n\n");
                         teacherLoggedIn = 0;
                     } else {
                         printf("You are not logged in.\n");

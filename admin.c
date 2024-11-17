@@ -227,7 +227,7 @@ void addTeacher() {
     char data[256];
     snprintf(data, sizeof(data), "%s,%s,%s,%s,%s", id, name, department, phone, gender);
     writeToFile(TEACHER_FILE, data);
-    printf("\nTeacher added successfully!\n");
+    printf("Teacher added successfully!\n\n");
 }
 
 void viewTeachers() {
@@ -349,7 +349,7 @@ void assignCourse() {
 }
 
 void viewAssignedCourses() {
-    printf("============ List of Assigned Courses ============\n");
+    printf("============ List of Assigned Courses Teacher ============\n");
     readFromFile(COURSE_FILE);
     printf("\n");
 }

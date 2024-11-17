@@ -58,15 +58,19 @@ void viewPersonalInfo() {
 
 void viewResult() {
     // Logic for a student to view only their own result
-    printf("=============== List of Result ===============\n");
+    printf("=============== List of Student Result ===============\n");
     readFromFile(RESULT_FILE);
     printf("\n");
 }
 
 
+
+
+
+
 /// Special Feature
 void specialFeature() {
-    printf("special Feature Coming soon...\n");
+    printf("special Feature Coming soon...\n\n");
     // Reserved for future development
 }
 
