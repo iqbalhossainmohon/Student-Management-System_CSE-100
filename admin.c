@@ -62,6 +62,7 @@ void manageTeachers() {
         printf("=========================\n");
         printf("Select an option: ");
         scanf("%d", &choice);
+        printf("\n");
 
         switch (choice) {
             case 1:
@@ -97,6 +98,7 @@ void manageStudents() {
         printf("=========================\n");
         printf("Select an option: ");
         scanf("%d", &choice);
+        printf("\n");
 
         switch (choice) {
             case 1:
@@ -182,6 +184,7 @@ void adminPanel() {
             printf("=======================\n");
             printf("Select an option: ");
             scanf("%d", &choice);
+            printf("\n");
 
             switch (choice) {
                 case 3:
@@ -208,16 +211,21 @@ void adminPanel() {
 
 /// Teacher
 void addTeacher() {
-    char id[10], name[50], subject[50];
+    char id[50], name[50], department[50], phone[20], gender[15];
     printf("Enter Teacher ID: ");
     scanf("%s", id);
     printf("Enter Teacher Name: ");
     scanf("%s", name);
-    printf("Enter Subject: ");
-    scanf("%s", subject);
+    printf("Enter Department: ");
+    scanf("%s", department);
+
+    printf("Enter Phone Number: ");
+    scanf("%s", phone);
+    printf("Enter Gender: ");
+    scanf("%s", gender);
 
     char data[256];
-    snprintf(data, sizeof(data), "%s,%s,%s", id, name, subject);
+    snprintf(data, sizeof(data), "%s,%s,%s,%s,%s", id, name, department, phone, gender);
     writeToFile(TEACHER_FILE, data);
     printf("\nTeacher added successfully!\n");
 }
@@ -230,17 +238,21 @@ void viewTeachers() {
 
 void updateTeacher() {
     char id[10];
-    printf("Enter Teacher ID to update: ");
+    printf("Enter Teacher ID to Update: ");
     scanf("%s", id);
 
-    char name[50], subject[50];
-    printf("Enter New Name: ");
+    char name[50], department[50], phone[20], gender[15];
+    printf("Enter Update Name: ");
     scanf("%s", name);
-    printf("Enter New Subject: ");
-    scanf("%s", subject);
+    printf("Enter Update Department: ");
+    scanf("%s", department);
+    printf("Enter Update Phone: ");
+    scanf("%s", phone);
+    printf("Enter Update Gender: ");
+    scanf("%s", gender);
 
     char newData[256];
-    snprintf(newData, sizeof(newData), "%s,%s,%s", id, name, subject);
+    snprintf(newData, sizeof(newData), "%s,%s,%s,%s,%s", id, name, department, phone, gender);
     updateFile(TEACHER_FILE, id, newData);
     //printf("Teacher updated successfully!\n");
 }
@@ -256,16 +268,23 @@ void deleteTeacher() {
 
 /// Student
 void addStudent() {
-    char id[10], name[50], course[50];
+    char id[10], name[50], department[50], age[10], phone[20], gender[15];
     printf("Enter Student ID: ");
     scanf("%s", id);
     printf("Enter Student Name: ");
     scanf("%s", name);
-    printf("Enter Course: ");
-    scanf("%s", course);
+    printf("Enter Department: ");
+    scanf("%s", department);
+
+    printf("Enter Age: ");
+    scanf("%s", age);
+    printf("Enter Phone Number: ");
+    scanf("%s", phone);
+    printf("Enter Gender: ");
+    scanf("%s", gender);
 
     char data[256];
-    snprintf(data, sizeof(data), "%s,%s,%s", id, name, course);
+    snprintf(data, sizeof(data), "%s,%s,%s,%s,%s,%s", id, name, department,age, phone, gender);
     writeToFile(STUDENT_FILE, data);
     printf("\nStudent added successfully!\n");
 }
@@ -281,14 +300,20 @@ void updateStudent() {
     printf("Enter Student ID to update: ");
     scanf("%s", id);
 
-    char name[50], course[50];
-    printf("Enter New Name: ");
+    char name[50], department[50], age[10], phone[20], gender[15];
+    printf("Enter Update Name: ");
     scanf("%s", name);
-    printf("Enter New Course: ");
-    scanf("%s", course);
+    printf("Enter Update Department: ");
+    scanf("%s", department);
+    printf("Enter Update Age: ");
+    scanf("%s", age);
+    printf("Enter Update Phone: ");
+    scanf("%s", phone);
+    printf("Enter Update Gender: ");
+    scanf("%s", gender);
 
     char newData[256];
-    snprintf(newData, sizeof(newData), "%s,%s,%s", id, name, course);
+    snprintf(newData, sizeof(newData), "%s,%s,%s,%s,%s,%s", id, name, department, age, phone, gender);
     updateFile(STUDENT_FILE, id, newData);
     //printf("Student updated successfully!\n");
 }
@@ -303,19 +328,28 @@ void deleteStudent() {
 
 /// Course
 void assignCourse() {
-    char teacherId[10], courseId[10];
+    char teacherId[50], course01[50], course02[50], course03[50], course04[50], course05[50];
     printf("Enter Teacher ID: ");
     scanf("%s", teacherId);
-    printf("Enter Course ID: ");
-    scanf("%s", courseId);
+    printf("Enter Course 01: ");
+    scanf("%s", course01);
+    printf("Enter Course 02: ");
+    scanf("%s", course02);
+    printf("Enter Course 03: ");
+    scanf("%s", course03);
+    printf("Enter Course 04: ");
+    scanf("%s", course04);
+    printf("Enter Course 05: ");
+    scanf("%s", course05);
 
     char data[256];
-    snprintf(data, sizeof(data), "%s,%s", teacherId, courseId);
+    snprintf(data, sizeof(data), "%s,%s,%s,%s,%s,%s", teacherId, course01, course02, course03, course04, course05);
     writeToFile(COURSE_FILE, data);
-    printf("Course assigned successfully!\n");
+    printf("Course assigned successfully!\n\n");
 }
 
 void viewAssignedCourses() {
-    printf("List of Assigned Courses:\n");
+    printf("============ List of Assigned Courses ============\n");
     readFromFile(COURSE_FILE);
+    printf("\n");
 }
