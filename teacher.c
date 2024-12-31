@@ -34,6 +34,7 @@ int teacherAuthenticate(const char *filename, const char *id, const char *name) 
     return 0;
 }
 
+// Teacher login
 void loginTeacher() {
     char name[50], id[50];
     printf("Enter Teacher ID: ");
@@ -124,36 +125,37 @@ void teacherPanel() {
             }
         }
         else {
-            printf("3. View All Students\n");
-            printf("4. Add Student Result\n");
-            printf("5. View All Results\n");
-            //printf("6. Update Student Result\n");
-            printf("6. Logout\n");
+            printf("1. View All Students\n");
+            printf("2. Add Student Result\n");
+            printf("3. View All Results\n");
+            //printf("5. Update Student Result\n");
+            printf("4. Logout\n");
 
             printf("=========================\n");
             printf("Select an option: ");
             scanf("%d", &choice);
 
             switch (choice){
-                case 3:
+                case 1:
                     viewAllStudents();
                 break;
-                case 4:
+                case 2:
                     addStudentResult();
                 break;
-                case 5:
+                case 3:
                     viewAllResults();
                 break;
 
-                //case 6:
+                //case 5:
                   //  updateStudentResult();
                // break;
 
-                case 6:
+                case 4:
                     if (teacherLoggedIn) {
                         printf("Teacher logging out successful\n\n");
                         teacherLoggedIn = 0;
-                    } else {
+                    }
+                else {
                         printf("You are not logged in.\n");
                     }
                 return;
@@ -162,6 +164,6 @@ void teacherPanel() {
             }
         }
     }
-    while (choice != 6);
-    //while (choice != 7);
+    while (choice != 4);
+    //while (choice != 5);
 }

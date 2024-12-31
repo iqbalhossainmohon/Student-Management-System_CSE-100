@@ -177,26 +177,26 @@ void adminPanel() {
                     printf("Invalid choice! Please try again.\n");
             }
         } else {
-            printf("3. Manage Teachers\n");
-            printf("4. Manage Students\n");
-            printf("5. Manage Courses\n");
-            printf("6. Logout\n");
+            printf("1. Manage Teachers\n");
+            printf("2. Manage Students\n");
+            printf("3. Manage Courses\n");
+            printf("4. Logout\n");
             printf("=======================\n");
             printf("Select an option: ");
             scanf("%d", &choice);
             printf("\n");
 
             switch (choice) {
-                case 3:
+                case 1:
                     manageTeachers();
                 break;
-                case 4:
+                case 2:
                     manageStudents();
                 break;
-                case 5:
+                case 3:
                     manageCourses();
                 break;
-                case 6:
+                case 4:
                     printf("Logging out...\n");
                 isLoggedIn = 0;
                 break;
@@ -204,7 +204,7 @@ void adminPanel() {
                     printf("Invalid choice! Please try again.\n");
             }
         }
-    } while (choice != 3 || isLoggedIn);
+    } while (choice != 4 || isLoggedIn);
 }
 
 

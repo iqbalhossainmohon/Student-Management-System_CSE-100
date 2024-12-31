@@ -33,6 +33,7 @@ int studentAuthenticate(const char *filename, const char *id, const char *name) 
     return 0;
 }
 
+// Student login
 void loginStudent() {
     char name[50], id[50];
     printf("Enter Student ID: ");
@@ -69,10 +70,131 @@ void viewResult() {
 
 
 /// Special Feature
-void specialFeature() {
-    printf("special Feature Coming soon...\n\n");
-    // Reserved for future development
+void displayCampusMap(int start, int end) {
+    char route[256] = ""; // To store the route
+    int distance = 0;
+
+    if (start == 1 && end == 2) {
+        strcpy(route, "Anti Gate -> Admission Section");
+        distance = 5;
+    }
+    else if (start == 1 && end == 3) {
+        strcpy(route, "Anti Gate -> Admission Section -> Library");
+        distance = 15;
+    }
+    else if (start == 1 && end == 4) {
+        strcpy(route, "Anti Gate -> Admission Section -> Library -> Computer Lab");
+        distance = 35;
+    }
+    else if (start == 1 && end == 5) {
+        strcpy(route, "Anti Gate -> Admission Section -> Library -> Computer Lab -> Cafeteria");
+        distance = 45;
+    }
+    else if (start == 1 && end == 6) {
+        strcpy(route, "Anti Gate -> Admission Section -> Library -> Computer Lab -> Cafeteria -> CSC Department");
+        distance = 57;
+    }
+    else if (start == 2 && end == 3) {
+        strcpy(route, "Admission Section -> Library");
+        distance = 10;
+    }
+    else if (start == 2 && end == 4) {
+        strcpy(route, "Admission Section -> Library -> Computer Lab");
+        distance = 25;
+    }
+    else if (start == 2 && end == 5) {
+        strcpy(route, "Admission Section -> Library -> Computer Lab -> Cafeteria");
+        distance = 35;
+    }
+    else if (start == 2 && end == 6) {
+        strcpy(route, "Admission Section -> Library -> Computer Lab -> Cafeteria -> CSC Department");
+        distance = 47;
+    }
+    else if (start == 3 && end == 4) {
+        strcpy(route, "Library -> Computer Lab");
+        distance = 15;
+    }
+    else if (start == 3 && end == 5) {
+        strcpy(route, "Library -> Computer Lab -> Cafeteria");
+        distance = 25;
+    }
+    else if (start == 3 && end == 6) {
+        strcpy(route, "Library -> Computer Lab -> Cafeteria -> CSC Department");
+        distance = 37;
+    }
+    else if (start == 4 && end == 5) {
+        strcpy(route, "Computer Lab -> Cafeteria");
+        distance = 8;
+    }
+    else if (start == 4 && end == 6) {
+        strcpy(route, "Computer Lab -> Cafeteria -> CSC Department");
+        distance = 20;
+    }
+    else if (start == 5 && end == 6) {
+        strcpy(route, "Cafeteria -> CSC Department");
+        distance = 12;
+    }
+    else {
+        printf("Invalid route!\n");
+        return;
+    }
+
+    // Displaying the route and distance
+    printf("\nYou are at: ");
+    switch (start) {
+        case 1: printf("Anti Gate\n"); break;
+        case 2: printf("Admission Section\n"); break;
+        case 3: printf("Library\n"); break;
+        case 4: printf("Computer Lab\n"); break;
+        case 5: printf("Cafeteria\n"); break;
+        case 6: printf("CSC Department\n"); break;
+    }
+
+    printf("You want to go to: ");
+    switch (end) {
+        case 1: printf("Anti Gate\n"); break;
+        case 2: printf("Admission Section\n"); break;
+        case 3: printf("Library\n"); break;
+        case 4: printf("Computer Lab\n"); break;
+        case 5: printf("Cafeteria\n"); break;
+        case 6: printf("CSC Department\n"); break;
+    }
+
+    printf("\nRoute Map: %s\n", route);
+    printf("Total Distance: %d meters\n\n", distance);
 }
+
+
+/// Special Feature Function
+void specialFeature() {
+
+    int start, end;
+
+    printf("\n========== Campus Navigation System ==========\n\n");
+    printf("Select your current location\n");
+    printf("1. Anti Gate\n");
+    printf("2. Admission Section\n");
+    printf("3. Library\n");
+    printf("4. Computer Lab\n");
+    printf("5. Cafeteria\n");
+    printf("6. CSC Department\n");
+    printf("Enter your location (1-6): ");
+    scanf("%d", &start);
+
+    printf("\nSelect your destination\n");
+    printf("1. Anti Gate\n");
+    printf("2. Admission Section\n");
+    printf("3. Library\n");
+    printf("4. Computer Lab\n");
+    printf("5. Cafeteria\n");
+    printf("6. CSC Department\n");
+    printf("Enter your destination (1-6): ");
+    scanf("%d", &end);
+
+    displayCampusMap(start, end);
+
+}
+
 
 void studentPanel() {
     int choice;
@@ -97,26 +219,26 @@ void studentPanel() {
             }
         }
         else {
-            printf("3. View Students Info\n");
-            printf("4. View Result\n");
-            printf("5. Special Feature\n");
-            printf("6. Logout\n");
+            printf("1. View Students Info\n");
+            printf("2. View Result\n");
+            printf("3. Special Feature\n");
+            printf("4. Logout\n");
 
             printf("=========================\n");
             printf("Select an option: ");
             scanf("%d", &choice);
 
             switch (choice){
-                case 3:
+                case 1:
                     viewPersonalInfo();
                 break;
-                case 4:
+                case 2:
                     viewResult();
                 break;
-                case 5:
+                case 3:
                     specialFeature();
                 break;
-                case 6:
+                case 4:
 
                     if (studentLoggedIn) {
                         printf("Student logging out successful\n\n");
@@ -129,5 +251,5 @@ void studentPanel() {
                     printf("Invalid choice! Please try again.\n");
             }
         }
-    } while (choice != 6);
+    } while (choice != 4);
 }
